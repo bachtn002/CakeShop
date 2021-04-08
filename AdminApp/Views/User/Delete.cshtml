@@ -1,0 +1,16 @@
+﻿@model CakeShop.Service.Users.Model.DeleteModel
+
+@{ ViewData["Title"] = "Delete"; }
+
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <p>Bạn có thực sự muốn xóa người dùng này!</p>
+            <form asp-action="Delete">
+                <input type="submit" value="Xóa" class="btn btn-danger" />
+                <a class="btn btn-success" asp-action="Index">Quay lại</a>
+            </form>
+        </div>
+    </div>
+</div>
