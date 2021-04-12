@@ -12,7 +12,7 @@
 <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8">
-    <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
+    <title>Login</title>
 
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/vendors/images/apple-touch-icon.png">
@@ -66,22 +66,7 @@
                             <h2 class="text-center text-primary">Login To DeskApp</h2>
                         </div>
                         <form asp-controller="Login" asp-action="Login" method="post">
-                            <div class="select-role">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn active">
-                                        <input type="radio" name="options" id="admin">
-                                        <div class="icon"><img src="/vendors/images/briefcase.svg" class="svg" alt=""></div>
-                                        <span>I'm</span>
-                                        Manager
-                                    </label>
-                                    <label class="btn">
-                                        <input type="radio" name="options" id="user">
-                                        <div class="icon"><img src="/vendors/images/person.svg" class="svg" alt=""></div>
-                                        <span>I'm</span>
-                                        Employee
-                                    </label>
-                                </div>
-                            </div>
+                            
                             <div class="input-group custom">
                                 <input type="text" class="form-control form-control-lg" asp-for="UserName"  placeholder="Username">
                                 <div class="input-group-append custom">
