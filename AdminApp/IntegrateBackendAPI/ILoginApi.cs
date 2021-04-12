@@ -1,10 +1,11 @@
-﻿using CakeShop.Service.Users.Model;
+﻿using CakeShop.Service.ApiResult;
+using CakeShop.Service.Users.Model;
 using System.Threading.Tasks;
 
 namespace Admin.IntegrateBackendAPI
 {
     public interface ILoginApi
     {
-        Task<string> Authen(LoginAuthenticateRequest request);
+        Task<string> Authen(LoginAuthenRequest request);
     }
 }

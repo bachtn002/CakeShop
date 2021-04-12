@@ -1,4 +1,5 @@
-﻿using CakeShop.Service.Users.Model;
+﻿using CakeShop.Service.ApiResult;
+using CakeShop.Service.Users.Model;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
@@ -15,7 +16,7 @@ namespace Admin.IntegrateBackendAPI
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<string> Authen(LoginAuthenticateRequest request)
+        public async Task<string> Authen(LoginAuthenRequest request)
         {
             var json = JsonConvert.SerializeObject(request);
             var client = _httpClientFactory.CreateClient();

@@ -1,6 +1,6 @@
 ﻿namespace CakeShop.Service.Users.Model
 {
-    public class LoginAuthenticateRequest
+    public class LoginAuthenRequest
     {
         private string userName;
         private string passWord;

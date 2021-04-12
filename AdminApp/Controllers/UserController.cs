@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace CakeShop.Admin.Controllers
 {
+    // Lu nhoc ky quai pho backer
+
 
     [Authorize]
     public class UserController : Controller
@@ -44,15 +46,18 @@ namespace CakeShop.Admin.Controllers
             return View(request);
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Create(RegisterModel request)
         {
             if (!ModelState.IsValid)
-                return View(ModelState);
+                return View();
+
             var result =await _manageUsersApi.Create(request);
             if (result)
             {

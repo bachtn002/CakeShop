@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CakeShop.Data.Migrations
 {
@@ -50,7 +50,7 @@ namespace CakeShop.Data.Migrations
                     ToDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ApplyForAll = table.Column<bool>(type: "bit", nullable: false),
                     DiscountPercent = table.Column<int>(type: "int", nullable: true),
-                    DiscountAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    DiscountAmount = table.Column<decimal>(type: "decimal", nullable: true),
                     ProductIds = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProductCategoryIds = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
@@ -150,14 +150,14 @@ namespace CakeShop.Data.Migrations
                 {
                     IdProduct = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OriginalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ProductPrice = table.Column<decimal>(type: "decimal", nullable: false),
+                    OriginalPrice = table.Column<decimal>(type: "decimal", nullable: false),
                     StockProduct = table.Column<int>(type: "int", nullable: false),
                     BrandProduct = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     CodeProduct = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     DateCreate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ImageProduct = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    WeightProduct = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    WeightProduct = table.Column<decimal>(type: "decimal", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -300,7 +300,7 @@ namespace CakeShop.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -354,8 +354,8 @@ namespace CakeShop.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExternalTransactionId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Fee = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal", nullable: false),
+                    Fee = table.Column<decimal>(type: "decimal", nullable: false),
                     Result = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
@@ -380,7 +380,7 @@ namespace CakeShop.Data.Migrations
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal", nullable: false)
                 },
                 constraints: table =>
                 {

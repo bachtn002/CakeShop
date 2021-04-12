@@ -3,7 +3,10 @@ using CakeShop.Data.Entities;
 using CakeShop.Service.Products.Interface;
 using CakeShop.Service.Products.Service;
 using CakeShop.Service.Users.Interface;
+using CakeShop.Service.Users.Model;
 using CakeShop.Service.Users.Service;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,13 +34,20 @@ namespace CakeShop.BackendAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddFluentValidation();
             services.AddDbContext<CakeShopDbContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("CakeShopDb")));
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<SignInManager<User>, SignInManager<User>>();
             services.AddTransient<UserManager<User>, UserManager<User>>();
             services.AddTransient<IUserService, UserService>();
+
+            services.AddControllers()
+                .AddFluentValidation(
+                fv=>fv.RegisterValidatorsFromAssemblyContaining<LoginModelValidator>());
+            
+            services.AddTransient<IValidator<LoginAuthenRequest>, LoginModelValidator>();
+            services.AddTransient<IValidator<RegisterModel>, RegisterModelValidator>();
 
             services.AddIdentity<User, Role>().AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<CakeShopDbContext>();

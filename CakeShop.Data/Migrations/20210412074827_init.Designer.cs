@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CakeShop.Data.Migrations
 {
     [DbContext(typeof(CakeShopDbContext))]
-    [Migration("20210329152638_init")]
+    [Migration("20210412074827_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace CakeShop.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -176,7 +176,7 @@ namespace CakeShop.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<decimal?>("DiscountAmount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal");
 
                     b.Property<int?>("DiscountPercent")
                         .HasColumnType("int");
@@ -280,7 +280,7 @@ namespace CakeShop.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -320,16 +320,16 @@ namespace CakeShop.Data.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<decimal>("OriginalPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal");
 
                     b.Property<decimal>("ProductPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal");
 
                     b.Property<int>("StockProduct")
                         .HasColumnType("int");
 
                     b.Property<decimal>("WeightProduct")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal");
 
                     b.HasKey("IdProduct");
 
@@ -434,13 +434,13 @@ namespace CakeShop.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal");
 
                     b.Property<string>("ExternalTransactionId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Fee")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal");
 
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");

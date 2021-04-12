@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CakeShop.BackendAPI", "Cake
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CakeShop.MainWebApp", "CakeShop.MainWebApp\CakeShop.MainWebApp.csproj", "{F10AF3A3-B1E8-43D3-9E87-B2055983C1CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeShop.Admin", "AdminApp\CakeShop.Admin.csproj", "{8248EAA9-2B5D-47E1-B580-592D321F6761}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CakeShop.Admin", "AdminApp\CakeShop.Admin.csproj", "{8248EAA9-2B5D-47E1-B580-592D321F6761}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

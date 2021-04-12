@@ -30,12 +30,14 @@ namespace CakeShop.BackendAPI.Controllers
         }
         [HttpPost("authenticate")]
         [AllowAnonymous]
-        public async Task<IActionResult> LoginAuthen([FromBody] LoginAuthenticateRequest request)
+        public async Task<IActionResult> LoginAuthen([FromBody] LoginAuthenRequest request)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var resultToken = await _userService.LoginAuthenticate(request);
             if (string.IsNullOrEmpty(resultToken))
             {
-                return BadRequest("Login not succeeded!");
+                return BadRequest(resultToken);
             }
             return Ok(resultToken);
         }

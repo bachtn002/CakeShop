@@ -41,24 +41,35 @@ namespace Admin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginAuthenticateRequest request)
+        public async Task<IActionResult> Login(LoginAuthenRequest request)
         {
             if (!ModelState.IsValid)
-                return View(ModelState);
-            // Goi den backend api
-            var token = await _loginApi.Authen(request);
-            // Sau khi lấy được token, chúng ta sẽ giải mã token này bằng hàm giải mã
-
-
-            var userPrincipal = this.ValidateToken(token);
-            var authenProperties = new AuthenticationProperties
             {
-                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                IsPersistent = false,
-            };
-            HttpContext.Session.SetString("Token", token);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal, authenProperties);
-            return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                // Goi den backend api
+                var token = await _loginApi.Authen(request);
+                if (string.IsNullOrEmpty(token))
+                {
+                    return RedirectToAction("Login", "Login");
+                }
+                else
+                { 
+                    // Sau khi lấy được token, chúng ta sẽ giải mã token này bằng hàm giải mã
+                    var userPrincipal = this.ValidateToken(token);
+                    var authenProperties = new AuthenticationProperties
+                    {
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                        IsPersistent = false,
+                    };
+                    HttpContext.Session.SetString("Token", token);
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                        userPrincipal, authenProperties);
+                    return RedirectToAction("Index", "Home");
+                }
+            }
         }
         private ClaimsPrincipal ValidateToken(string ValidToken)
         {

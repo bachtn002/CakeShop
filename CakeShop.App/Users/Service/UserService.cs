@@ -65,7 +65,7 @@ namespace CakeShop.Service.Users.Service
             return pagedResult;
         }
 
-        public async Task<string> LoginAuthenticate(LoginAuthenticateRequest request)
+        public async Task<string> LoginAuthenticate(LoginAuthenRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
 
