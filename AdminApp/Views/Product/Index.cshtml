@@ -1,12 +1,12 @@
-﻿@using CakeShop.Service.Products.Model
-@using CakeShop.Service.ApiResult
+﻿@using CakeShop.Service.ApiResult
+@using CakeShop.Service.Products.Model
 @model PagedResult<ModelViewProduct>
+
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Product management";
     
 }
-
-
 
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
@@ -48,16 +48,11 @@
                     <table class="data-table table stripe hover nowrap">
                         <thead>
                             <tr>
-                                <th>Tên sản phẩm</th>
-                                <th>Tên danh mục</th>
-                                <th>Giá bán</th>
-                                <th>Giá bán gốc</th>
-                                <th>Số lượng</th>
-                                <th>Hãng sản xuất</th>
-                                <th>Cân nặng</th>
-                                <th>Code</th>
-                                <th>Ảnh</th>
-                                <th>Ngày tạo</th>
+                                <th>Tên</th>
+                                <th>Họ</th>
+                                <th>Tài khoản</th>
+                                <th>Số điện thoại</th>
+                                <th>Hộp thư</th>
                                 <th class="datatable-nosort">Tùy chọn</th>
                             </tr>
                         </thead>
@@ -65,15 +60,10 @@
                             @foreach (var item in Model.Items)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(Model => item.NameProduct)</td>
+                                    <td class="table-plus">@Html.DisplayFor(Model => item.BrandProduct)</td>
                                     <td>@Html.DisplayFor(Model => item.NameCategory)</td>
+                                    <td>@Html.DisplayFor(Model => item.NameProduct)</td>
                                     <td>@Html.DisplayFor(Model => item.ProductPrice)</td>
-                                    <td>@Html.DisplayFor(Model => item.OriginalPrice)</td>
-                                    <td>@Html.DisplayFor(Model => item.StockProduct)</td>
-                                    <td>@Html.DisplayFor(Model => item.BrandProduct)</td>
-                                    <td>@Html.DisplayFor(Model => item.WeightProduct)</td>
-                                    <td>@Html.DisplayFor(Model => item.CodeProduct)</td>
-                                    <td>@Html.DisplayFor(Model => item.ImageProduct)</td>
                                     <td>@Html.DisplayFor(Model => item.DateCreate)</td>
                                     <td>
                                         <div class="dropdown">
@@ -111,4 +101,3 @@
         </div>
     </div>
 </div>
-

@@ -18,6 +18,7 @@ namespace CakeShop.Service.Products.Model
         private string languageId;
         private DateTime dateCreate;
 
+        public int Id { get => id; set => id = value; }
         public decimal ProductPrice { get => productPrice; set => productPrice = value; }
         public decimal OriginalPrice { get => originalPrice; set => originalPrice = value; }
         public int StockProduct { get => stockProduct; set => stockProduct = value; }
@@ -29,6 +30,5 @@ namespace CakeShop.Service.Products.Model
         public string NameCategory { get => nameCategory; set => nameCategory = value; }
         public string LanguageId { get => languageId; set => languageId = value; }
         public DateTime DateCreate { get => dateCreate; set => dateCreate = value; }
-        public int Id { get => id; set => id = value; }
     }
 }

@@ -35,7 +35,7 @@ namespace CakeShop.Service.Products.Service
                 DateCreate = DateTime.Now,
                 ImageProduct = request.ImageProduct,
                 ProductTranslations = translations
-                
+
             };
             foreach (var language in languages)
             {
@@ -82,22 +82,22 @@ namespace CakeShop.Service.Products.Service
                         join pt in _context.ProductTranslations on p.IdProduct equals pt.ProductId
                         join c in _context.Categories on pc.CategoryId equals c.Id
                         join ct in _context.CategoryTranslations on c.Id equals ct.CategoryId
-                        where pt.LanguageId == "vi-VN" && pt.LanguageId == ct.LanguageId
-                        select new { p,ct,pt};
+
+                        select new { p, ct, pt };
             var data = await query.Select(x => new ModelViewProduct()
             {
+                Id = x.p.IdProduct,
                 ProductPrice = x.p.ProductPrice,
-                BrandProduct = x.p.BrandProduct,
-                CodeProduct = x.p.CodeProduct,
-                ImageProduct = x.p.ImageProduct,
                 OriginalPrice = x.p.OriginalPrice,
                 StockProduct = x.p.StockProduct,
+                BrandProduct = x.p.BrandProduct,
                 WeightProduct = x.p.WeightProduct,
-                DateCreate = x.p.DateCreate,
-                NameCategory = x.ct.NameCategory,
+                CodeProduct = x.p.CodeProduct,
+                ImageProduct = x.p.ImageProduct,
                 NameProduct = x.pt.NameProduct,
-                Id =x.p.IdProduct,
-                LanguageId=x.pt.LanguageId
+                NameCategory = x.ct.NameCategory,
+                LanguageId = x.pt.LanguageId,
+                DateCreate = x.p.DateCreate
 
             }).ToListAsync();
             var pagedResult = new PagedResult<ModelViewProduct>()
