@@ -37,12 +37,12 @@ namespace CakeShop.Admin.Controllers
         public async Task<IActionResult> Delete(DeleteModel request)
         {
             if (!ModelState.IsValid)
-                return View();
+                return View(request);
 
             var result = await _manageUsersApi.DeleteUserById(request.Id);
             if (result.IsSuccessed)
                 return RedirectToAction("Index");
-            ModelState.AddModelError("", result.Message);
+            /*ModelState.AddModelError("", result.Message);*/
             return View(request);
         }
         [HttpGet]
@@ -56,14 +56,14 @@ namespace CakeShop.Admin.Controllers
         public async Task<IActionResult> Create(RegisterModel request)
         {
             if (!ModelState.IsValid)
-                return View();
+                return View(request);
 
             var result =await _manageUsersApi.Create(request);
             if (result)
             {
                 return RedirectToAction("Index");
             }
-            return View(request);
+            return View();
 
         }
     }

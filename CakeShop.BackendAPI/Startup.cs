@@ -42,12 +42,7 @@ namespace CakeShop.BackendAPI
             services.AddTransient<UserManager<User>, UserManager<User>>();
             services.AddTransient<IUserService, UserService>();
 
-            services.AddControllers()
-                .AddFluentValidation(
-                fv=>fv.RegisterValidatorsFromAssemblyContaining<LoginModelValidator>());
             
-            services.AddTransient<IValidator<LoginAuthenRequest>, LoginModelValidator>();
-            services.AddTransient<IValidator<RegisterModel>, RegisterModelValidator>();
 
             services.AddIdentity<User, Role>().AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<CakeShopDbContext>();

@@ -45,7 +45,7 @@ namespace Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Login", "Login");
+                return View(request);
             }
             else
             {
@@ -53,7 +53,7 @@ namespace Admin.Controllers
                 var token = await _loginApi.Authen(request);
                 if (string.IsNullOrEmpty(token))
                 {
-                    return RedirectToAction("Login", "Login");
+                    return View();
                 }
                 else
                 { 
