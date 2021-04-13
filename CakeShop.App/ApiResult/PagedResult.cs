@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CakeShop.Service.Users.Model
+namespace CakeShop.Service.ApiResult
 {
     public class PagedResult<T>
     {

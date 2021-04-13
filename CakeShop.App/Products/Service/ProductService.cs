@@ -1,7 +1,9 @@
 ﻿using CakeShop.Data.EF;
 using CakeShop.Data.Entities;
+using CakeShop.Service.ApiResult;
 using CakeShop.Service.Products.Interface;
 using CakeShop.Service.Products.Model;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -33,6 +35,7 @@ namespace CakeShop.Service.Products.Service
                 DateCreate = DateTime.Now,
                 ImageProduct = request.ImageProduct,
                 ProductTranslations = translations
+                
             };
             foreach (var language in languages)
             {
@@ -72,10 +75,15 @@ namespace CakeShop.Service.Products.Service
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<List<ModelViewProduct>> GetAll()
+        public async Task<PagedResult<ModelViewProduct>> GetAll()
         {
             var query = from p in _context.Products
-                        select new { p };
+                        join pc in _context.ProductWithCategories on p.IdProduct equals pc.ProductId
+                        join pt in _context.ProductTranslations on p.IdProduct equals pt.ProductId
+                        join c in _context.Categories on pc.CategoryId equals c.Id
+                        join ct in _context.CategoryTranslations on c.Id equals ct.CategoryId
+                        where pt.LanguageId == "vi-VN" && pt.LanguageId == ct.LanguageId
+                        select new { p,ct,pt};
             var data = await query.Select(x => new ModelViewProduct()
             {
                 ProductPrice = x.p.ProductPrice,
@@ -84,9 +92,19 @@ namespace CakeShop.Service.Products.Service
                 ImageProduct = x.p.ImageProduct,
                 OriginalPrice = x.p.OriginalPrice,
                 StockProduct = x.p.StockProduct,
-                WeightProduct = x.p.WeightProduct
+                WeightProduct = x.p.WeightProduct,
+                DateCreate = x.p.DateCreate,
+                NameCategory = x.ct.NameCategory,
+                NameProduct = x.pt.NameProduct,
+                Id =x.p.IdProduct,
+                LanguageId=x.pt.LanguageId
+
             }).ToListAsync();
-            return data;
+            var pagedResult = new PagedResult<ModelViewProduct>()
+            {
+                Items = data
+            };
+            return pagedResult;
         }
 
         public Task<List<ModelViewProduct>> GetById(int productId, string languageId)

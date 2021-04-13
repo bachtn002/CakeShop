@@ -45,6 +45,8 @@ namespace AdminApp
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<ILoginApi, LoginApi>();
             services.AddTransient<IManageUsersApi, ManageUsersApi>();
+            services.AddTransient<IProductApi, ProductApi>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

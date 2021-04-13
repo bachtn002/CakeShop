@@ -3,10 +3,7 @@ using CakeShop.Data.Entities;
 using CakeShop.Service.Products.Interface;
 using CakeShop.Service.Products.Service;
 using CakeShop.Service.Users.Interface;
-using CakeShop.Service.Users.Model;
 using CakeShop.Service.Users.Service;
-using FluentValidation;
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -41,7 +38,8 @@ namespace CakeShop.BackendAPI
             services.AddTransient<SignInManager<User>, SignInManager<User>>();
             services.AddTransient<UserManager<User>, UserManager<User>>();
             services.AddTransient<IUserService, UserService>();
-
+            services.AddTransient<IProductService, ProductService>();
+           
             
 
             services.AddIdentity<User, Role>().AddDefaultTokenProviders()

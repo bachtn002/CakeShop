@@ -10,30 +10,29 @@ namespace CakeShop.BackendAPI.Controllers
     [Authorize]
     public class ProductController : ControllerBase
     {
-        private readonly IProductService _context;
-        public ProductController(IProductService context)
+        private readonly IProductService _productService;
+        public ProductController(IProductService productService)
         {
-            _context = context;
+            _productService = productService;
         }
 
-        [HttpGet("get-product")]
-        // Default URL of HttpGet: http
-        public async Task<IActionResult> GetAll()
+        [HttpGet("get-all-product")]
+        public async Task<IActionResult> GetAllProduct()
         {
-            var product = await _context.GetAll();
-            return Ok(product);
+            var user = await _productService.GetAll();
+            return Ok(user);
         }
         [HttpGet("get-product-by-category-id")]
         public async Task<IActionResult> GetAllProductByCategoryId(int categoryId, string languageId)
         {
-            var product = await _context.GetProductByCategoryId(categoryId, languageId);
+            var product = await _productService.GetProductByCategoryId(categoryId, languageId);
 
             return Ok(product);
         }
         [HttpGet("get-product-by-id")]
         public async Task<IActionResult> GetProductById(int productId, string languageId)
         {
-            var product = await _context.GetById(productId, languageId);
+            var product = await _productService.GetById(productId, languageId);
             if (product == null) return BadRequest($"Cannot find product {productId}");
             return Ok(product);
         }
