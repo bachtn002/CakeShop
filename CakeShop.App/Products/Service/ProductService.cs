@@ -75,14 +75,13 @@ namespace CakeShop.Service.Products.Service
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<PagedResult<ModelViewProduct>> GetAll()
+        public async Task<PagedResultProduct<ModelViewProduct>> GetAllProductService()
         {
             var query = from p in _context.Products
                         join pc in _context.ProductWithCategories on p.IdProduct equals pc.ProductId
                         join pt in _context.ProductTranslations on p.IdProduct equals pt.ProductId
                         join c in _context.Categories on pc.CategoryId equals c.Id
                         join ct in _context.CategoryTranslations on c.Id equals ct.CategoryId
-
                         select new { p, ct, pt };
             var data = await query.Select(x => new ModelViewProduct()
             {
@@ -100,12 +99,14 @@ namespace CakeShop.Service.Products.Service
                 DateCreate = x.p.DateCreate
 
             }).ToListAsync();
-            var pagedResult = new PagedResult<ModelViewProduct>()
+            var pagedResult = new PagedResultProduct<ModelViewProduct>()
             {
                 Items = data
             };
             return pagedResult;
         }
+
+        
 
         public Task<List<ModelViewProduct>> GetById(int productId, string languageId)
         {

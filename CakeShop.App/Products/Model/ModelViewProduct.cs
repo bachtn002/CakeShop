@@ -12,7 +12,6 @@ namespace CakeShop.Service.Products.Model
         private decimal weightProduct;
         private string codeProduct;
         private string imageProduct;
-
         private string nameProduct;
         private string nameCategory;
         private string languageId;

@@ -45,7 +45,7 @@ namespace CakeShop.Service.Users.Service
 
         }
 
-        public async Task<PagedResult<ViewModelUsers>> GetAllUserService()
+        public async Task<PagedResultUser<ViewModelUsers>> GetAllUserService()
         {
             var query = from p in _cakeShopDbContext.Users
                         select new { p };
@@ -58,7 +58,7 @@ namespace CakeShop.Service.Users.Service
                 PhoneNumber = x.p.PhoneNumber,
                 Email = x.p.Email
             }).ToListAsync();
-            var pagedResult = new PagedResult<ViewModelUsers>()
+            var pagedResult = new PagedResultUser<ViewModelUsers>()
             {
                 Items = data
             };

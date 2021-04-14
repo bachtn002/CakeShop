@@ -1,5 +1,6 @@
 ﻿using CakeShop.Service.ApiResult;
 using CakeShop.Service.Users.Model;
+using CakeShop.Service.Users.Service;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
@@ -45,7 +46,7 @@ namespace CakeShop.Admin.IntegrateBackendAPI
 
         }
 
-        public async Task<PagedResult<ViewModelUsers>> GetAllUser()
+        public async Task<PagedResultUser<ViewModelUsers>> GetAllUser()
         {
             var client = _httpClientFactory.CreateClient();
             var sessions = _httpContextAccessor.HttpContext.Session.GetString("Token");
@@ -55,7 +56,7 @@ namespace CakeShop.Admin.IntegrateBackendAPI
             var body = await result.Content.ReadAsStringAsync();
             if (result.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<PagedResult<ViewModelUsers>>(body);
+                return JsonConvert.DeserializeObject<PagedResultUser<ViewModelUsers>>(body);
             }
             else
             {

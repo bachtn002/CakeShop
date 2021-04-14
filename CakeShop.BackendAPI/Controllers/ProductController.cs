@@ -19,8 +19,8 @@ namespace CakeShop.BackendAPI.Controllers
         [HttpGet("get-all-product")]
         public async Task<IActionResult> GetAllProduct()
         {
-            var user = await _productService.GetAll();
-            return Ok(user);
+            var product = await _productService.GetAllProductService();
+            return Ok(product);
         }
         [HttpGet("get-product-by-category-id")]
         public async Task<IActionResult> GetAllProductByCategoryId(int categoryId, string languageId)

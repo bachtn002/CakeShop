@@ -1,5 +1,7 @@
-﻿using CakeShop.Service.ApiResult;
-using CakeShop.Service.Products.Model;
+﻿using CakeShop.Service.Products.Model;
+using CakeShop.Service.Products.Service;
+using CakeShop.Service.Users.Model;
+using CakeShop.Service.Users.Service;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
@@ -11,17 +13,16 @@ using System.Threading.Tasks;
 
 namespace CakeShop.Admin.IntegrateBackendAPI
 {
-    
-    public class ProductApi : IProductApi
+    public class ManageProductApi : IManageProductApi
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public ProductApi(IHttpClientFactory httpClientFactory, IHttpContextAccessor httpContextAccessor)
+        public ManageProductApi(IHttpClientFactory httpClientFactory, IHttpContextAccessor httpContextAccessor)
         {
             _httpClientFactory = httpClientFactory;
             _httpContextAccessor = httpContextAccessor;
         }
-        public async Task<PagedResult<ModelViewProduct>> GetAllProduct()
+        public async Task<PagedResultProduct<ModelViewProduct>> GetAllProduct()
         {
             var client = _httpClientFactory.CreateClient();
             var sessions = _httpContextAccessor.HttpContext.Session.GetString("Token");
@@ -31,7 +32,7 @@ namespace CakeShop.Admin.IntegrateBackendAPI
             var body = await result.Content.ReadAsStringAsync();
             if (result.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<PagedResult<ModelViewProduct>>(body);
+                return JsonConvert.DeserializeObject<PagedResultProduct<ModelViewProduct>>(body);
             }
             else
             {

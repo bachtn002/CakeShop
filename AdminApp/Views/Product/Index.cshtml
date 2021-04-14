@@ -1,11 +1,9 @@
-﻿@using CakeShop.Service.ApiResult
-@using CakeShop.Service.Products.Model
-@model PagedResult<ModelViewProduct>
+﻿@using CakeShop.Service.Products.Service
 
+@model PagedResultProduct<CakeShop.Service.Products.Model.ModelViewProduct>
 
 @{
-    ViewData["Title"] = "Product management";
-    
+
 }
 
 <div class="main-container">
@@ -60,11 +58,11 @@
                             @foreach (var item in Model.Items)
                             {
                                 <tr>
-                                    <td class="table-plus">@Html.DisplayFor(Model => item.BrandProduct)</td>
+                                    <td class="table-plus">@Html.DisplayFor(Model => item.NameProduct)</td>
                                     <td>@Html.DisplayFor(Model => item.NameCategory)</td>
-                                    <td>@Html.DisplayFor(Model => item.NameProduct)</td>
                                     <td>@Html.DisplayFor(Model => item.ProductPrice)</td>
-                                    <td>@Html.DisplayFor(Model => item.DateCreate)</td>
+                                    <td>@Html.DisplayFor(Model => item.OriginalPrice)</td>
+                                    <td>@Html.DisplayFor(Model => item.BrandProduct)</td>
                                     <td>
                                         <div class="dropdown">
                                             <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -101,3 +99,4 @@
         </div>
     </div>
 </div>
+

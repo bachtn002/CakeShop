@@ -1,5 +1,4 @@
 ﻿using CakeShop.Admin.IntegrateBackendAPI;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,20 +7,17 @@ using System.Threading.Tasks;
 
 namespace CakeShop.Admin.Controllers
 {
-    [Authorize]
     public class ProductController : Controller
     {
-        private readonly IProductApi _productApi;
-        public ProductController(IProductApi productApi)
+        private readonly IManageProductApi _manageProductApi;
+        public ProductController(IManageProductApi  manageProductApi)
         {
-            _productApi = productApi;
+            _manageProductApi = manageProductApi;
         }
-        [HttpGet]
         public IActionResult Index()
         {
-            var data = _productApi.GetAllProduct();
-            return View(data);
+            var product = _manageProductApi.GetAllProduct();
+            return View(product);
         }
-        
     }
 }

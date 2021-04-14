@@ -1,5 +1,6 @@
 ﻿using CakeShop.Service.ApiResult;
 using CakeShop.Service.Users.Model;
+using CakeShop.Service.Users.Service;
 using System;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace CakeShop.Service.Users.Interface
     {
         Task<string> LoginAuthenticate(LoginAuthenRequest request);
         Task<bool> RegisterUser(RegisterModel request);
-        Task<PagedResult<ViewModelUsers>> GetAllUserService();
+        Task<PagedResultUser<ViewModelUsers>> GetAllUserService();
 
         Task<ApiResult<bool>> DeleteUser(Guid id);
     }
