@@ -1,4 +1,5 @@
 ﻿using CakeShop.Admin.IntegrateBackendAPI;
+using CakeShop.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,10 @@ namespace CakeShop.Admin.Controllers
         {
             _manageProductApi = manageProductApi;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var product = _manageProductApi.GetAllProduct();
+            var product = await _manageProductApi.GetAllProduct();
+            
             return View(product);
         }
     }

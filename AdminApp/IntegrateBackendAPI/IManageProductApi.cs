@@ -11,6 +11,6 @@ namespace CakeShop.Admin.IntegrateBackendAPI
 {
     public interface IManageProductApi
     {
-        Task<PagedResultProduct<ModelViewProduct>> GetAllProduct();
+        public Task<PagedResultProduct<ModelViewProduct>> GetAllProduct();
     }
 }

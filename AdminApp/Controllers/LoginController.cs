@@ -61,8 +61,8 @@ namespace Admin.Controllers
                     var userPrincipal = this.ValidateToken(token);
                     var authenProperties = new AuthenticationProperties
                     {
-                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                        IsPersistent = false,
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddSeconds(30),
+                        IsPersistent = false
                     };
                     HttpContext.Session.SetString("Token", token);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,

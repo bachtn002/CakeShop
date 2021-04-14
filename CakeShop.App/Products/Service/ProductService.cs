@@ -99,6 +99,7 @@ namespace CakeShop.Service.Products.Service
                 DateCreate = x.p.DateCreate
 
             }).ToListAsync();
+
             var pagedResult = new PagedResultProduct<ModelViewProduct>()
             {
                 Items = data
