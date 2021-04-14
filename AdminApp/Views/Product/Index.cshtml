@@ -52,6 +52,12 @@
                                 <th>Tài khoản</th>
                                 <th>Số điện thoại</th>
                                 <th>Hộp thư</th>
+                                <th>Hộp thư</th>
+                                <th>Hộp thư</th>
+                                <th>Hộp thư</th>
+                                <th>Hộp thư</th>
+                                <th>Hộp thư</th>
+                                <th>Hộp thư</th>
                                 <th class="datatable-nosort">Tùy chọn</th>
                             </tr>
                         </thead>
@@ -59,11 +65,17 @@
                             @foreach (var item in Model.Items)
                             {
                                 <tr>
-                                    <td class="table-plus">@Html.DisplayFor(Model => item.NameProduct)</td>
+                                    <td>@Html.DisplayFor(Model => item.NameProduct)</td>
                                     <td>@Html.DisplayFor(Model => item.NameCategory)</td>
                                     <td>@Html.DisplayFor(Model => item.ProductPrice)</td>
                                     <td>@Html.DisplayFor(Model => item.OriginalPrice)</td>
                                     <td>@Html.DisplayFor(Model => item.BrandProduct)</td>
+                                    <td>@Html.DisplayFor(Model => item.CodeProduct)</td>
+                                    <td>@Html.DisplayFor(Model => item.ImageProduct)</td>
+                                    <td>@Html.DisplayFor(Model => item.WeightProduct)</td>
+                                    <td>@Html.DisplayFor(Model => item.StockProduct)</td>
+                                    <td>@Html.DisplayFor(Model => item.LanguageId)</td>
+                                    <td>@Html.DisplayFor(Model => item.DateCreate)</td>
                                     <td>
                                         <div class="dropdown">
                                             <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">

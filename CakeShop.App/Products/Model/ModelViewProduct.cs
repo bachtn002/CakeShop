@@ -11,11 +11,11 @@ namespace CakeShop.Service.Products.Model
         private string brandProduct;
         private decimal weightProduct;
         private string codeProduct;
+        private DateTime dateCreate;
         private string imageProduct;
         private string nameProduct;
         private string nameCategory;
         private string languageId;
-        private DateTime dateCreate;
 
         public int Id { get => id; set => id = value; }
         public decimal ProductPrice { get => productPrice; set => productPrice = value; }
