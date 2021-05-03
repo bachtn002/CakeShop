@@ -9,7 +9,6 @@ namespace CakeShop.Admin.Controllers
 {
     // Lu nhoc ky quai pho backer
 
-
     [Authorize]
     public class UserController : Controller
     {

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CakeShop.Data.Migrations
 {
     [DbContext(typeof(CakeShopDbContext))]
-    [Migration("20210419100814_init")]
+    [Migration("20210426134012_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
