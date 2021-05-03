@@ -1,22 +1,29 @@
-﻿using CakeShop.MainWebApp.Models;
+﻿using CakeShop.MainWebApp.IntergrateAPI;
+using CakeShop.MainWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace CakeShop.MainWebApp.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IProduct _product;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IProduct product)
         {
             _logger = logger;
+            _product = product;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var product = await _product.GetAllProduct();
+            return View(product);
         }
 
         public IActionResult About()
